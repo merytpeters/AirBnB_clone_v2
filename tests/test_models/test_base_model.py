@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+"""Test Cases for base model"""
 from models.base_model import BaseModel
 import unittest
 import datetime
@@ -9,16 +9,16 @@ import os
 
 
 class test_basemodel(unittest.TestCase):
-    """ """
+    """Base Model Test case Class"""
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """Initializing Test Case Class"""
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
         self.value = BaseModel
 
     def setUp(self):
-        """ """
+        """Check if the class exists"""
         pass
 
     def tearDown(self):
@@ -75,10 +75,12 @@ class test_basemodel(unittest.TestCase):
             new = self.value(**n)
 
     def test_kwargs_one(self):
-        """ """
+        """Test that unexpected keys raise keyError"""
         n = {'Name': 'test'}
         with self.assertRaises(KeyError):
             new = self.value(**n)
+        #self.assertIsNotNone(new)
+        
 
     def test_id(self):
         """ """
