@@ -19,7 +19,7 @@ class test_basemodel(unittest.TestCase):
 
     def setUp(self):
         """Check if the class exists"""
-        pass
+        self.model = BaseModel()
 
     def tearDown(self):
         try:
@@ -99,3 +99,15 @@ class test_basemodel(unittest.TestCase):
         n = new.to_dict()
         new = BaseModel(**n)
         self.assertFalse(new.created_at == new.updated_at)
+
+    def test_method_baseModel(self):
+        """Checks if baseModel has methods"""
+        self.assertTrue(hasattr(BaseModel, "__init__"))
+        self.assertTrue(hasattr(BaseModel, "save"))
+        self.assertTrue(hasattr(BaseModel, "to_dict"))
+        self.assertTrue(hasattr(BaseModel, "__str__"))
+
+    def test_save(self):
+        """Test that save method works"""
+        self.model.save()
+        self.assertNotEqual(self.model.created_at, self.model.updated_at)
