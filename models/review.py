@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Review module for the HBNB project """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String, ForeignKey, Float
 from sqlalchemy.orm import relationship
 
 
@@ -13,4 +13,3 @@ class Review(BaseModel, Base):
     text = Column(String(1024), nullable=False)
 
     user = relationship("User", back_populates="reviews")
-    place = relationship("Place", back_populates="reviews")

@@ -21,5 +21,3 @@ class Place(BaseModel, Base):
 
     user = relationship("User", back_populate="places")
     city = relationship("City", back_populate="places")
-    reviews relationship("Reviews", backref="place",
-                         cascade="all, delete-orphan")

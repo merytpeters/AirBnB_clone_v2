@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """ City Module for HBNB project """
+from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, ForeignKey, cascade
+from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from models.place import place
 
 
 class City(BaseModel, Base):
@@ -13,5 +15,5 @@ class City(BaseModel, Base):
     name = Column(String(128), nullable=False)
 
     state = relationship("State", back_populates="cities")
-    places = relationship("Place", backref="city",
-                          cascade="all, delete-orphan")
+    places = relationship("Place", backref="cities", cascade='all,
+                          delete, delete-orphan')
