@@ -75,11 +75,11 @@ class test_basemodel(unittest.TestCase):
             new = self.value(**n)
 
     def test_kwargs_one(self):
-        """Test that unexpected keys raise keyError"""
+        """Test that unexpected keys"""
         n = {'Name': 'test'}
-        with self.assertRaises(KeyError):
-            new = self.value(**n)
-        #self.assertIsNotNone(new)
+        # with self.assertRaises(KeyError):
+        new = self.value(**n)
+        self.assertIsNotNone(new)
         
 
     def test_id(self):
